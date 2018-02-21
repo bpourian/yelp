@@ -13,10 +13,11 @@
 <% @average = 0.0 %>
 <ul>
 <% @restaurant.reviews.each do |review| %>
-      <li> Rating: <%= review.rating %> </li>
-      <li> Comment: <%= review.comment %> </li>
+      <!-- <li> Rating: <%= review.rating %> </li>
+      <li> Comment: <%= review.comment %> </li> -->
       <% @average += review.rating %>
 <% end %>
+<%= render @restaurant.reviews %>
 </ul>
 
 <h2>User Reviews (Average <%= (@average/@restaurant.reviews.count) %> )</h2>
