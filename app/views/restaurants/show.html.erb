@@ -12,15 +12,12 @@
 
 <% @average = 0.0 %>
 <ul>
-<% @restaurant.reviews.each do |review| %>
-      <!-- <li> Rating: <%= review.rating %> </li>
-      <li> Comment: <%= review.comment %> </li> -->
-      <% @average += review.rating %>
-<% end %>
-<%= render @restaurant.reviews %>
+  <% @restaurant.reviews.each {|review| @average += review.rating  } %>
+  <% @average = @average/@restaurant.reviews.count %>
+  <%= render @restaurant.reviews %>
 </ul>
 
-<h2>User Reviews (Average <%= (@average/@restaurant.reviews.count) %> )</h2>
+<h2>User Reviews (Average <%= @average.round(1) %> )</h2>
 
 <%= form_with(model:[@restaurant, @restaurant.reviews.build], local: true) do |form| %>
   <% if @restaurant.errors.any? %>
