@@ -1,0 +1,5 @@
+<% @average = 0.0 %>
+  <% @restaurant.reviews.each {|review| @average += review.rating  } %>
+  <% @average = @average/@restaurant.reviews.count %>
+
+  <h2>User Reviews (Average <%= @average.round(1) %> )</h2>

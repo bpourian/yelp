@@ -12,40 +12,12 @@
 
 <% @average = 0.0 %>
 <ul>
-  <% @restaurant.reviews.each {|review| @average += review.rating  } %>
-  <% @average = @average/@restaurant.reviews.count %>
   <%= render @restaurant.reviews %>
+  <%= render 'restaurants/average' %>
 </ul>
 
-<h2>User Reviews (Average <%= @average.round(1) %> )</h2>
 
-<%= form_with(model:[@restaurant, @restaurant.reviews.build], local: true) do |form| %>
-  <% if @restaurant.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
-
-      <ul>
-      <% @restaurant.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :rating %>
-    <%= form.number_field :rating, id: :review_rating %>
-  </div>
-
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment, id: :review_comment %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<%= render 'reviews/form' %>
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
