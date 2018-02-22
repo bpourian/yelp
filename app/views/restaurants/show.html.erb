@@ -11,6 +11,11 @@
   <%= @restaurant.description %>
 </p>
 
+<p>
+  <strong>Owner Contact Email:</strong>
+  <%= @restaurant.user.email %>
+</p>
+
 <% @average = 0.0 %>
 <ul>
   <%= render @restaurant.reviews %>
