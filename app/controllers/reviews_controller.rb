@@ -1,27 +1,38 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
+  # GET /reviews
+  # GET /reviews.json
   def index
     @reviews = Review.all
   end
 
+  # GET /reviews/1
+  # GET /reviews/1.json
   def show
   end
 
+  # GET /reviews/new
   def new
     @review = Review.new
   end
 
+  # GET /reviews/1/edit
   def edit
   end
 
+  # POST /reviews
+  # POST /reviews.json
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review = @restaurant.reviews.new(review_params)
     @review.user_id = current_user.id
+    @review.save
     redirect_to @restaurant
   end
 
+  # PATCH/PUT /reviews/1
+  # PATCH/PUT /reviews/1.json
   def update
     respond_to do |format|
       if @review.update(review_params)
