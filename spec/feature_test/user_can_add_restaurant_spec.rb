@@ -14,6 +14,7 @@ RSpec.describe "Add restaurant", :type => :feature do
       click_button 'Create Restaurant'
       expect(page).to have_content('Testaurant')
       expect(page).to have_content('Delicious')
+      expect(page).to have_content('tansaku@gmail.com')
     end
   end
 end

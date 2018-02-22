@@ -14,13 +14,5 @@ RSpec.describe "Add review", :type => :feature do
       within('div.reviewrating') {expect(page).to have_content('5')}
       within('div.reviewcomment') {expect(page).to have_content('Really Good!!')}
     end
-
-    scenario 'create one review for a restaurant and check the reviewer is displayed' do
-      sign_up(email='bob@bobsbananas.com')
-      create_restaurant('Testaurant', 'Delicious')
-      create_review(2, 'really good!!')
-      within('div#reviews') {expect(page).to have_content('bob@bobsbananas.com')}
-    end
-
   end
 end
