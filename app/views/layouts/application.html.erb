@@ -9,6 +9,7 @@
   </head>
 
   <body>
+    <h2>Hi, <%= if current_user then current_user.email end %>!</h2>
     <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
     <%= link_to 'Sign in with Facebook', user_facebook_omniauth_authorize_path %>
     <%= yield %>
