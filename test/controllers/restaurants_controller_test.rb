@@ -3,6 +3,7 @@ require 'test_helper'
 class RestaurantsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @restaurant = restaurants(:one)
+    login_as user
   end
 
   test "should get index" do
